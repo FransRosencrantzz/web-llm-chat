@@ -298,6 +298,7 @@
   flex-direction: column;
   position: relative;
   height: 100%;
+  width: 100%;
 }
 
 .chat-body {
@@ -308,29 +309,6 @@
   padding-bottom: 40px;
   position: relative;
   overscroll-behavior: none;
-}
-
-.chat-action-context {
-  display: flex;
-  justify-content: center;
-
-  .chat-input-action {
-    display: inline-flex;
-    border-radius: 20px;
-    font-size: 12px;
-    background-color: var(--white);
-    color: var(--black);
-    border: var(--border-in-light);
-    padding: 4px 10px;
-    box-shadow: var(--card-shadow);
-    align-items: center;
-    height: 16px;
-    overflow: hidden;
-
-    .text {
-      padding-left: 5px;
-    }
-  }
 }
 
 .chat-body-main-title {
@@ -496,8 +474,8 @@
 }
 
 @media screen and (min-width: 600px) {
-  $max-image-width: calc(calc(1200px - var(--sidebar-width))/3*2/var(--image-count));
-  $image-width: calc(calc(var(--window-width) - var(--sidebar-width))/3*2/var(--image-count));
+  $max-image-width: calc(1200px/3*2/var(--image-count));
+  $image-width: calc(100vw/3*2/var(--image-count));
 
   .chat-message-item-image-multi {
     width: $image-width;
@@ -507,7 +485,7 @@
   }
 
   .chat-message-item-image {
-    max-width: calc(calc(1200px - var(--sidebar-width))/3*2);
+    max-width: calc(1200px/3*2);
   }
 }
 
