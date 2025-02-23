@@ -91,6 +91,7 @@ import Image from "next/image";
 import { MLCLLMContext, WebLLMContext } from "../context";
 import { ChatImage } from "../typing";
 import ModelSelect from "./model-select";
+import AddIcon from "../icons/add.svg";
 
 export function ScrollDownToast(prop: { show: boolean; onclick: () => void }) {
   return (
@@ -1039,21 +1040,8 @@ function _Chat() {
   }
 
   return (
-    <div className={styles.chat} key={session.id}>
+    <div className={styles.chat}>
       <div className="window-header">
-        {isMobileScreen && (
-          <div className="window-actions">
-            <div className={"window-action-button"}>
-              <IconButton
-                icon={<ReturnIcon />}
-                bordered
-                title={Locale.Chat.Actions.ChatList}
-                onClick={() => navigate(Path.Home)}
-              />
-            </div>
-          </div>
-        )}
-
         <div className={`window-header-title ${styles["chat-body-title"]}`}>
           <div
             className={`window-header-main-title ${styles["chat-body-main-title"]}`}
@@ -1066,6 +1054,26 @@ function _Chat() {
           </div>
         </div>
         <div className="window-actions">
+          {isMobileScreen && (
+            <div className={"window-action-button"}>
+              <IconButton
+                icon={<ReturnIcon />}
+                bordered
+                title={Locale.Chat.Actions.ChatList}
+                onClick={() => navigate(Path.Home)}
+              />
+            </div>
+          )}
+          <div className={"window-action-button"}>
+            <IconButton
+              icon={<AddIcon />}
+              text={Locale.Home.NewChat}
+              onClick={() => {
+                chatStore.newSession();
+              }}
+              bordered
+            />
+          </div>
           {!isMobileScreen && (
             <div className="window-action-button">
               <IconButton

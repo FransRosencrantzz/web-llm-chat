@@ -23,7 +23,6 @@ import { getCSSVar, useMobileScreen } from "../utils";
 import { DEFAULT_MODELS, Path, SlotID } from "../constant";
 import { ErrorBoundary } from "./error";
 import { getISOLang, getLang } from "../locales";
-import { SideBar } from "./sidebar";
 import { useAppConfig } from "../store/config";
 import { WebLLMApi } from "../client/webllm";
 import { ModelClient, useChatStore } from "../store";
@@ -145,18 +144,14 @@ function Screen() {
         }`
       }
     >
-      <>
-        <SideBar className={isHome ? styles["sidebar-show"] : ""} />
-
-        <div className={styles["window-content"]} id={SlotID.AppBody}>
-          <Routes>
-            <Route path={Path.Home} element={<Chat />} />
-            <Route path={Path.Templates} element={<TemplatePage />} />
-            <Route path={Path.Chat} element={<Chat />} />
-            <Route path={Path.Settings} element={<Settings />} />
-          </Routes>
-        </div>
-      </>
+      <div className={styles["window-content"]} id={SlotID.AppBody}>
+        <Routes>
+          <Route path={Path.Home} element={<Chat />} />
+          <Route path={Path.Templates} element={<TemplatePage />} />
+          <Route path={Path.Chat} element={<Chat />} />
+          <Route path={Path.Settings} element={<Settings />} />
+        </Routes>
+      </div>
     </div>
   );
 }
